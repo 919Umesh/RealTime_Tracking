@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:geocoding/geocoding.dart';
 
+import 'map_window.dart';
+
 class LocationPage extends StatefulWidget {
   @override
   _LocationPageState createState() => _LocationPageState();
 }
 
 class _LocationPageState extends State<LocationPage> {
-  loc.Location location = loc.Location(); // Use loc prefix for the Location class
+  loc.Location location = loc.Location();
   loc.LocationData? _currentPosition;
   String _currentAddress = "Fetching address...";
   bool _isFetchingLocation = false;
@@ -27,7 +29,6 @@ class _LocationPageState extends State<LocationPage> {
     bool _serviceEnabled;
     loc.PermissionStatus _permissionGranted;
 
-    // Check if the location service is enabled
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -39,7 +40,6 @@ class _LocationPageState extends State<LocationPage> {
       }
     }
 
-    // Check for location permission
     _permissionGranted = await location.hasPermission();
     if (_permissionGranted == loc.PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
@@ -51,11 +51,11 @@ class _LocationPageState extends State<LocationPage> {
       }
     }
 
-    // Listen to location changes
     location.onLocationChanged.listen((loc.LocationData currentLocation) {
       setState(() {
         _currentPosition = currentLocation;
-        _getAddressFromLatLng(_currentPosition!.latitude, _currentPosition!.longitude);
+        _getAddressFromLatLng(
+            _currentPosition!.latitude, _currentPosition!.longitude);
         _isFetchingLocation = false;
       });
     });
@@ -68,7 +68,8 @@ class _LocationPageState extends State<LocationPage> {
       if (placemarks.isNotEmpty) {
         Placemark place = placemarks[0];
         setState(() {
-          _currentAddress = "${place.locality}, ${place.postalCode}, ${place.country}";
+          _currentAddress =
+              "${place.locality}, ${place.postalCode}, ${place.country}";
         });
       }
     } catch (e) {
@@ -105,6 +106,21 @@ class _LocationPageState extends State<LocationPage> {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _currentPosition != null
+                  ? () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CustomInfoWindows(
+                            initialLatitude: _currentPosition!.latitude ?? 0.0,
+                            initialLongitude: _currentPosition!.longitude ?? 0.0,
+                          ),
+                        ),
+                      );
+                    }
+                  : null,
+              child: Text("Map View"),
+            ),
             ElevatedButton(
               onPressed: _isFetchingLocation ? null : _getLocation,
               child: Text("Refresh Location"),
