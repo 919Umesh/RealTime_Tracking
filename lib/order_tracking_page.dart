@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
-import 'package:geocoding/geocoding.dart'; // Changed from geolocator to geocoding for placemarkFromCoordinates
+import 'package:location/location.dart' as loc;
+import 'package:geocoding/geocoding.dart';
 
 class LocationPage extends StatefulWidget {
   @override
@@ -8,8 +8,8 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
-  Location location = Location();
-  LocationData? _currentPosition;
+  loc.Location location = loc.Location(); // Use loc prefix for the Location class
+  loc.LocationData? _currentPosition;
   String _currentAddress = "Fetching address...";
   bool _isFetchingLocation = false;
 
@@ -25,7 +25,7 @@ class _LocationPageState extends State<LocationPage> {
     });
 
     bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
+    loc.PermissionStatus _permissionGranted;
 
     // Check if the location service is enabled
     _serviceEnabled = await location.serviceEnabled();
@@ -41,9 +41,9 @@ class _LocationPageState extends State<LocationPage> {
 
     // Check for location permission
     _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
+    if (_permissionGranted == loc.PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+      if (_permissionGranted != loc.PermissionStatus.granted) {
         setState(() {
           _isFetchingLocation = false;
         });
@@ -52,7 +52,7 @@ class _LocationPageState extends State<LocationPage> {
     }
 
     // Listen to location changes
-    location.onLocationChanged.listen((LocationData currentLocation) {
+    location.onLocationChanged.listen((loc.LocationData currentLocation) {
       setState(() {
         _currentPosition = currentLocation;
         _getAddressFromLatLng(_currentPosition!.latitude, _currentPosition!.longitude);
