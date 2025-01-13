@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:location/location.dart';
@@ -51,7 +52,7 @@ class HomePageState extends State<HomePage> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          ElevatedButton(
+            ElevatedButton(
             onPressed: _isLoading ? null : _getLocation,
             child: const Text('Add My Location'),
           ),
@@ -153,10 +154,11 @@ class HomePageState extends State<HomePage> {
 
   Future<void> _updateLocation(LocationData locationData) async {
     try {
+      int randomNumber = Random().nextInt(1000);
       await _firestore.collection('location').doc('user1').set({
         'latitude': locationData.latitude,
         'longitude': locationData.longitude,
-        'name': 'Umesh',
+        'name':randomNumber.toString(),
         'timestamp': FieldValue.serverTimestamp(),
       }, SetOptions(merge: true));
     } catch (e) {
@@ -177,7 +179,7 @@ class HomePageState extends State<HomePage> {
 
   void _navigateToMap(String userId) {
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => MapPage(userId: userId))
+        MaterialPageRoute(builder: (context) => MapPage())
     );
   }
 
