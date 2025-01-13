@@ -1,5 +1,3 @@
-
-// map_page.dart
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -27,7 +25,6 @@ class MapPageState extends State<MapPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-
           try {
             final userDoc = snapshot.data!.docs.firstWhere(
                     (doc) => doc.id == widget.userId

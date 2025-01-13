@@ -1,4 +1,4 @@
-// home_page.dart
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -156,7 +156,7 @@ class HomePageState extends State<HomePage> {
       await _firestore.collection('location').doc('user1').set({
         'latitude': locationData.latitude,
         'longitude': locationData.longitude,
-        'name': 'John',
+        'name': 'Umesh',
         'timestamp': FieldValue.serverTimestamp(),
       }, SetOptions(merge: true));
     } catch (e) {
