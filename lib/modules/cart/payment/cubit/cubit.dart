@@ -1,8 +1,14 @@
-import 'package:live_track/modules/payment/cubit/states.dart';
+
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../models/first_token.dart';
-import '../../../core/dio.dart';
-import '../../../core/utils.dart';
+import 'package:live_track/modules/cart/payment/cubit/states.dart';
+
+import '../../../../core/dio.dart';
+import '../../../../core/utils.dart';
+import '../../../../models/first_token.dart';
+
+
+
 
 class PaymentCubit extends Cubit<PaymentsStates>{
   PaymentCubit():super(PaymentInitialState());
@@ -12,8 +18,7 @@ class PaymentCubit extends Cubit<PaymentsStates>{
   FirstToken? firstToken;
 
   Future getFirstToken(String price,firstName, lastName, email, phone)async{
-    DioHelperPayment.postDate(url:'auth/tokens', data: {'api_key':''})
-        .then((value) {
+    DioHelperPayment.postDate(url:'auth/tokens', data: {'api_key':''}).then((value) {
       PaymobFirstToken=value.data['token'];
       print("First Token : $PaymobFirstToken");
       getOrderId(price,firstName, lastName, email, phone);

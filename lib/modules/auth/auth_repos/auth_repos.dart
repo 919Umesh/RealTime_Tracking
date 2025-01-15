@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../models/user_model.dart';
 import 'base_auth_repos.dart';
@@ -64,7 +65,7 @@ class AuthRepository extends BaseAuthRepository {
     return currentUser != null;
   }
 
-/*  Future<void> signInWithGoogle() async {
+ Future<void> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -80,7 +81,7 @@ class AuthRepository extends BaseAuthRepository {
     } catch (e) {
       throw Exception(e.toString());
     }
-  }*/
+  }
 
   @override
   // TODO: implement user

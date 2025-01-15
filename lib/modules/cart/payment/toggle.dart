@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:live_track/modules/payment/referanceCode.dart';
-import 'package:live_track/modules/payment/visaCard.dart';
-import '../../widgets/navigation.dart';
+import 'package:live_track/modules/cart/payment/referanceCode.dart';
+import 'package:live_track/modules/cart/payment/visaCard.dart';
+
+import '../../../widgets/navigation.dart';
+
 
 
 class ToggleScreen extends StatelessWidget {
@@ -32,7 +34,7 @@ class ToggleScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  // NavigateTo(context,  VisaCardScreen());
+                  //NavigateTo(context,  VisaCardScreen());
                 },
                 child: Container(
                   decoration: BoxDecoration(
