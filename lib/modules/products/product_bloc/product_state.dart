@@ -17,3 +17,16 @@ class ProductLoaded extends ProductState {
   @override
   List<Object> get props => [products];
 }
+
+class ProductAdding extends ProductState {}
+
+class ProductAdded extends ProductState {}
+
+class ProductAddError extends ProductState {
+  final String error;
+
+  const ProductAddError({required this.error});
+
+  @override
+  List<Object> get props => [error];
+}

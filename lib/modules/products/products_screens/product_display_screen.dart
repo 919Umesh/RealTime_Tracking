@@ -23,7 +23,7 @@ class _ProductDisplayScreenState extends State<ProductDisplayScreen> {
             TopContainer(searchBarTitle: "Search Product"),
             SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: ProductDislpayWidget(),
+              child: const ProductDislpayWidget(),
             ),
           ],
         ),

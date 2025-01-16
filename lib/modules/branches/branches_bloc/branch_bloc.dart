@@ -1,12 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../../models/branch_model.dart';
 import '../branches_repos/branch_repos.dart';
-
-
 part 'branch_event.dart';
 part 'branch_state.dart';
 

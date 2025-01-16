@@ -17,4 +17,21 @@ class ProductRepos extends BaseProductRepository {
       }).toList();
     });
   }
+
+  Future<void> addProduct(Product product) async {
+    try {
+      await _firebaseFirestore.collection('products').add({
+        'name': product.productName,
+        'imageUrl': product.productImageUrl,
+        'price': product.currentPrice,
+        'productSize': product.productSize,
+        'category': product.categoryName,
+        'oldprice': product.oldPrice,
+      });
+      print('Product added successfully.');
+    } catch (e) {
+      print('Error adding product: $e');
+      throw Exception('Failed to add product.');
+    }
+  }
 }

@@ -76,7 +76,7 @@ class _ProductDislpayWidgetState extends State<ProductDislpayWidget> {
                 ),
                 //borderRadius: BorderRadius.circular(16.0),
                 child: CachedNetworkImage(
-                  imageUrl: product.productImageUrl,
+                  imageUrl:"https://console.firebase.google.com/project/live-location-291ca/firestore/databases/-default-/data/${product.productImageUrl}",
                   fit: BoxFit.cover,
                 ),
               ),

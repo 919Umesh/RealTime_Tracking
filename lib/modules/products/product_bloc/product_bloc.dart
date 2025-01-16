@@ -17,6 +17,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         super(ProductLoading()) {
     on<LoadProducts>(_mapLoadProductsToState);
     on<UpdateProducts>(_mapUpdateProductsToState);
+    on<AddProduct>(_mapAddProductToState);
   }
 
   FutureOr<void> _mapUpdateProductsToState(
@@ -34,5 +35,22 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         );
       },
     );
+  }
+  FutureOr<void> _mapAddProductToState(
+      AddProduct event, Emitter<ProductState> emit) async {
+    emit(ProductAdding());
+    try {
+      emit(ProductAdding());
+      await _productRepos.addProduct(event.product);
+      emit(ProductAdded());
+    } catch (e) {
+      emit(ProductAddError(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<void> close() {
+    _productSubscription?.cancel();
+    return super.close();
   }
 }

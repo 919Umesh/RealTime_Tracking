@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:live_track/modules/products/products_screens/create_product.dart';
 
 import '../../../models/custom_error_model.dart';
 import '../../../core/colors.dart';
@@ -46,6 +47,10 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 InkWell(
                   onTap: () => Navigator.pushNamed(context, '/'),
+                 //  onTap: () =>Navigator.push(
+                 //    context,
+                 //    MaterialPageRoute(builder: (context) => const CreateProduct()),
+                 //  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     //crossAxisAlignment: CrossAxisAlignment.end,
