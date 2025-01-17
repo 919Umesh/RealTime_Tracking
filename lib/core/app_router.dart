@@ -26,6 +26,7 @@ class AppRouter {
         return SignUpPage.route();
       case '/product-Detail':
         return ProductDetail.route(product: settings.arguments as Product);
+        //This is default route
       default:
         return _errorRoute();
     }
