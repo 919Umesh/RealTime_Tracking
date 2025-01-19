@@ -45,5 +45,16 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Location Permissions -->
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>We need your location to track your activities while the app is in use.</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>We need your location to provide continuous tracking, even when the app is in the background.</string>
+
+        <!-- Storage and Camera Permissions -->
+            <key>NSPhotoLibraryUsageDescription</key>
+            <string>We need access to your photo library to save images taken within the app.</string>
+            <key>NSCameraUsageDescription</key>
+            <string>We need access to your camera to take pictures for your profile or other app features.</string>
 </dict>
 </plist>

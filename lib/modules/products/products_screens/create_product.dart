@@ -19,10 +19,10 @@ class _CreateProductState extends State<CreateProduct> {
   File? _imageFile;
   bool _isLoading = false;
 
-  // Initialize ImagePicker
+
   final ImagePicker _picker = ImagePicker();
 
-  // Field names for form validation
+
   static const String fieldProductName = 'productName';
   static const String fieldCurrentPrice = 'currentPrice';
   static const String fieldSize = 'size';

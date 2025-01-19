@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:live_track/modules/products/products_screens/create_product.dart';
-
 import '../../../models/custom_error_model.dart';
 import '../../../core/colors.dart';
 import '../../../core/utils.dart';
@@ -10,8 +8,6 @@ import '../../../widgets/main_button_widget.dart';
 import '../../../widgets/text_field_widget.dart';
 import '../auth_repos/auth_repos.dart';
 import '../sign_in_bloc/sign_in_bloc.dart';
-
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -41,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.only(top: 50.0),
+          padding: const EdgeInsets.only(top: 50.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
