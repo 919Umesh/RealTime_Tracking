@@ -24,6 +24,7 @@ class MapPageState extends State<MapPage> {
   bool _isSelectingSource = false;
   bool _isSelectingDestination = false;
 
+  //Google map API key
   final String _googleApiKey = 'AIzaSyDQ2c_pOSOFYSjxGMwkFvCVWKjYOM9siow';
 
   @override
@@ -60,7 +61,7 @@ class MapPageState extends State<MapPage> {
         });
       });
     } catch (e) {
-      debugPrint('Error getting location: $e');
+      debugPrint('Error in getting location: $e');
     }
   }
 
