@@ -1,13 +1,9 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-
 import '../../../models/custom_error_model.dart';
 import '../auth_repos/auth_repos.dart';
-
-
 part 'auth_event.dart';
 part 'auth_state.dart';
 
